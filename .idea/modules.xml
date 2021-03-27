@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/themeforest-NriuHDLu-flone-react-js-ecommerce-template.iml" filepath="$PROJECT_DIR$/.idea/themeforest-NriuHDLu-flone-react-js-ecommerce-template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ecommerce-microservices.iml" filepath="$PROJECT_DIR$/.idea/ecommerce-microservices.iml" />
     </modules>
   </component>
 </project>

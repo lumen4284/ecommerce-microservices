@@ -9,6 +9,7 @@ import static com.codingmogul.microservices.userservice.infrastructure.validator
 
 @Service
 public class UserService {
+
     @Transactional
     public void registerUser(UserRegisterRequest request){
         User user = User.create(request.getUsername(), request.getPassword(), request.getEmail());

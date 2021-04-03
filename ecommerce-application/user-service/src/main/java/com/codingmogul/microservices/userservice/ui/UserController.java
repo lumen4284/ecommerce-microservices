@@ -24,6 +24,7 @@ public class UserController {
     public ResponseEntity<String> createUser(@Valid @RequestBody UserRegisterRequest request)  {
 
         //        RequestValidator.checkNullFields(request);
+        userService.registerUser(request);
         return ResponseEntity.ok().body("postDto 객체 검증 성공");
     }
 

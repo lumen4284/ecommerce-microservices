@@ -15,7 +15,6 @@ public class Email {
     }
 
     private boolean validate(String email) {
-        final String regex = "^(.+)@(.+)$";;
         return false;
     }
 

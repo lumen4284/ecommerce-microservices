@@ -2,12 +2,11 @@ package com.codingmogul.microservices.userservice.ui;
 
 
 import com.codingmogul.microservices.userservice.application.UserService;
-import com.codingmogul.microservices.userservice.ui.dto.UserRegisterRequest;
+import com.codingmogul.microservices.userservice.domain.User;
+import com.codingmogul.microservices.userservice.ui.dto.SignInRequest;
+import com.codingmogul.microservices.userservice.ui.dto.SignUpRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -21,11 +20,15 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createUser(@Valid @RequestBody UserRegisterRequest request)  {
-
-        //        RequestValidator.checkNullFields(request);
-        userService.registerUser(request);
+    public ResponseEntity<String> signUp(@Valid @RequestBody SignUpRequest request)  {
+        userService.signUp(request);
         return ResponseEntity.ok().body("postDto 객체 검증 성공");
+    }
+
+    @GetMapping
+    public ResponseEntity<User> signIn(SignInRequest request){
+        final User foundUser = userService.signIn(request);
+        return ResponseEntity.ok().body(foundUser);
     }
 
 }

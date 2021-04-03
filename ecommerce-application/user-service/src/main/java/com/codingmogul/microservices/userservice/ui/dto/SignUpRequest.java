@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 
 @NoArgsConstructor
 @Getter
-public class UserRegisterRequest {
+public class SignUpRequest {
 
     @NotNull
     @NotBlank(message = "유저네임은 필수 입력 값입니다.")
@@ -25,7 +25,7 @@ public class UserRegisterRequest {
     @Email(message = "이메일 형식에 맞지 않습니다.")
     private String email;
 
-    public UserRegisterRequest(String username, String password, String email) {
+    public SignUpRequest(String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;

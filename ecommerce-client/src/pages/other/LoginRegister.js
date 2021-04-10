@@ -7,6 +7,8 @@ import Tab from "react-bootstrap/Tab";
 import Nav from "react-bootstrap/Nav";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
+import {addToCart, decreaseQuantity, deleteAllFromCart, deleteFromCart} from "../../redux/actions/cartActions";
+import {connect} from "react-redux";
 
 const LoginRegister = ({ location }) => {
   const { pathname } = location;
@@ -117,7 +119,26 @@ const LoginRegister = ({ location }) => {
 };
 
 LoginRegister.propTypes = {
-  location: PropTypes.object
+  location: PropTypes.object,
+  register: PropTypes.func,
+  login: PropTypes.func,
 };
 
-export default LoginRegister;
+const mapDispatchToProps = dispatch => {
+  return {
+    addToCart: (item, addToast, quantityCount) => {
+      dispatch(addToCart(item, addToast, quantityCount));
+    },
+    decreaseQuantity: (item, addToast) => {
+      dispatch(decreaseQuantity(item, addToast));
+    },
+    deleteFromCart: (item, addToast) => {
+      dispatch(deleteFromCart(item, addToast));
+    },
+    deleteAllFromCart: addToast => {
+      dispatch(deleteAllFromCart(addToast));
+    }
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginRegister);

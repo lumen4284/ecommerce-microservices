@@ -1,7 +1,7 @@
 import currencyReducer from "./currencyReducer";
 import productReducer from "./productReducer";
 import cartReducer from "./cartReducer";
-import userReducer from "./userReducer";
+import authReducer from "./authReducer";
 import wishlistReducer from "./wishlistReducer";
 import compareReducer from "./compareReducer";
 import { combineReducers } from "redux";
@@ -14,7 +14,7 @@ const rootReducer = combineReducers({
   cartData: cartReducer,
   wishlistData: wishlistReducer,
   compareData: compareReducer,
-  userData: userReducer
+  userData: authReducer
 });
 
 export default rootReducer;

@@ -10,8 +10,8 @@ import Nav from "react-bootstrap/Nav";
 import LayoutOne from "../../layouts/LayoutOne";
 import Breadcrumb from "../../wrappers/breadcrumb/Breadcrumb";
 import {
-    signUp
-} from "../../redux/actions/userActions";
+    register
+} from "../../redux/actions/authActions";
 import {connect} from "react-redux";
 import {useToasts} from "react-toast-notifications";
 
@@ -38,7 +38,7 @@ const LoginRegister = () => {
         e.preventDefault();
         setSubmitted(true);
         if(email && password && username)
-            dispatch(signUp(inputs, addToast));
+            dispatch(register(inputs, addToast));
     }
 
     return (

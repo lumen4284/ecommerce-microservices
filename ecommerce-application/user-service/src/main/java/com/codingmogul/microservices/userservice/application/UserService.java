@@ -24,8 +24,8 @@ public class UserService {
     }
 
     private void verifyDuplicatedUser(String email) {
-        userRepository.findByEmail(email)
-                .orElseThrow(() -> new IllegalArgumentException("중복된 유저입니다."));
+        if(userRepository.findByEmail(email).isPresent())
+                throw new IllegalArgumentException("중복된 유저입니다.");
     }
 
     public User signIn(SignInRequest request) {

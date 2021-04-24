@@ -12,6 +12,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin("*")
 public class UserController {
     private UserService userService;
 
@@ -25,8 +26,8 @@ public class UserController {
         return ResponseEntity.ok().body("postDto 객체 검증 성공");
     }
 
-    @GetMapping
-    public ResponseEntity<User> signIn(SignInRequest request){
+    @PostMapping("/login")
+    public ResponseEntity<User> signIn(@Valid @RequestBody SignInRequest request){
         final User foundUser = userService.signIn(request);
         return ResponseEntity.ok().body(foundUser);
     }

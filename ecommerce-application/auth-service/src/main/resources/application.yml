@@ -1,0 +1,22 @@
+jwt:
+  type: JWT
+  algorithm: HS256
+  issuer: codingmogul
+  sub: www.codingmogul.com
+  secret: codingmogul123
+  expires_in: 48
+
+spring:
+  h2:
+    console:
+      enabled: false
+      path: /h2-console
+
+  datasource:
+    url: jdbc:h2:mem:codingmogul
+    driver-class-name: org.h2.Driver
+    username: codingmogul
+    password: codingmogul
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect

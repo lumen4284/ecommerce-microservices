@@ -22,7 +22,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public JwtAuthenticationFilter(AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenUtil = jwtTokenUtil;
-        setFilterProcessesUrl("/api/services/controller/user/login");
+        setFilterProcessesUrl("/auth/token");
     }
 
     @Override
@@ -31,7 +31,7 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
             DefaultAuthRequest credentials =
                     new ObjectMapper().readValue(request.getInputStream(), DefaultAuthRequest.class);
 
-            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(credentials.getEmail(), credentials.getPassword()));
+            return authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(credentials.getSubject(), ""));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -57,7 +57,6 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Getter
     private static class DefaultAuthRequest {
-        private String email;
-        private String password;
+        private String subject;
     }
 }

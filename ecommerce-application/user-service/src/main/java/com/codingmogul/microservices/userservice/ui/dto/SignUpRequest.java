@@ -1,5 +1,6 @@
 package com.codingmogul.microservices.userservice.ui.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -8,10 +9,9 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class SignUpRequest {
-
     @NotNull
     @NotBlank(message = "유저네임은 필수 입력 값입니다.")
     private String username;
@@ -24,10 +24,4 @@ public class SignUpRequest {
     @NotBlank(message = "이메일은 필수 입력 값입니다.")
     @Email(message = "이메일 형식에 맞지 않습니다.")
     private String email;
-
-    public SignUpRequest(String username, String password, String email) {
-        this.username = username;
-        this.password = password;
-        this.email = email;
-    }
 }

@@ -1,12 +1,12 @@
 package com.codingmogul.microservices.userservice.ui.dto;
 
 import com.codingmogul.microservices.userservice.infrastructure.validator.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 
-@NoArgsConstructor
+@AllArgsConstructor
 @Getter
 public class SignInRequest {
     @NotNull
@@ -14,4 +14,5 @@ public class SignInRequest {
     private String inputEmail;
     @NotBlank(message = "비밀번호는 필수 입력 값입니다.")
     private String inputPassword;
+
 }

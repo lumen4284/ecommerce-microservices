@@ -1,9 +1,11 @@
 package com.codingmogul.microservices.userservice.application;
 
+import com.codingmogul.microservices.userservice.domain.AuthService;
 import com.codingmogul.microservices.userservice.domain.Email;
 import com.codingmogul.microservices.userservice.domain.User;
 import com.codingmogul.microservices.userservice.domain.UserRepository;
 import com.codingmogul.microservices.userservice.ui.dto.SignInRequest;
+import com.codingmogul.microservices.userservice.ui.dto.SignInResponse;
 import com.codingmogul.microservices.userservice.ui.dto.SignUpRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,12 +33,11 @@ public class UserService {
                 throw new IllegalArgumentException("중복된 유저입니다.");
     }
 
-    public User signIn(SignInRequest request) {
+    public String signIn(SignInRequest request) {
         final User foundUser = userRepository.findByEmail(Email.from(request.getInputEmail()))
                 .orElseThrow(() -> new IllegalArgumentException("없는 유저입니다."));
 
         foundUser.matchPassword(request.getInputPassword());
-        authService.getToken(foundUser.getEmail().getValue());
-        return foundUser;
+        return authService.getToken(foundUser.getEmail().getValue());
     }
 }

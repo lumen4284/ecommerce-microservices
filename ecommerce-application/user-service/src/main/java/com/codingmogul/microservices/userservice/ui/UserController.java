@@ -4,6 +4,7 @@ package com.codingmogul.microservices.userservice.ui;
 import com.codingmogul.microservices.userservice.application.UserService;
 import com.codingmogul.microservices.userservice.domain.User;
 import com.codingmogul.microservices.userservice.ui.dto.SignInRequest;
+import com.codingmogul.microservices.userservice.ui.dto.SignInResponse;
 import com.codingmogul.microservices.userservice.ui.dto.SignUpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,9 +28,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<User> signIn(@Valid @RequestBody SignInRequest request){
-        final User foundUser = userService.signIn(request);
-        return ResponseEntity.ok().body(foundUser);
+    public ResponseEntity<SignInResponse> signIn(@Valid @RequestBody SignInRequest request){
+        return ResponseEntity.ok().body(SignInResponse.from(userService.signIn(request)));
     }
 
 }

@@ -1,6 +1,7 @@
 package com.codingmogul.microservices.userservice.ui;
 
 
+import com.codingmogul.microservices.userservice.infrastructure.exception.ExternalServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -28,6 +29,14 @@ public class CustomExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(IllegalArgumentException.class)
     public Map<String, String> handleIllegalArgumentExceptions(IllegalArgumentException ex) {
+        Map<String, String> errors = new HashMap<>();
+        errors.put("errorMessage", ex.getMessage());
+        return errors;
+    }
+
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(ExternalServiceException.class)
+    public Map<String, String> handleRuntimeExceptions(ExternalServiceException ex) {
         Map<String, String> errors = new HashMap<>();
         errors.put("errorMessage", ex.getMessage());
         return errors;

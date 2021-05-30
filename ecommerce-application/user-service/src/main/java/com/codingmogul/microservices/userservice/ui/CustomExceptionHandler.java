@@ -1,6 +1,5 @@
 package com.codingmogul.microservices.userservice.ui;
 
-
 import com.codingmogul.microservices.userservice.infrastructure.exception.ExternalServiceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.FieldError;

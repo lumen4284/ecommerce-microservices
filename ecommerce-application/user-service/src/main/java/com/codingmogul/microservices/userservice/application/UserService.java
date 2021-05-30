@@ -5,7 +5,6 @@ import com.codingmogul.microservices.userservice.domain.Email;
 import com.codingmogul.microservices.userservice.domain.User;
 import com.codingmogul.microservices.userservice.domain.UserRepository;
 import com.codingmogul.microservices.userservice.ui.dto.SignInRequest;
-import com.codingmogul.microservices.userservice.ui.dto.SignInResponse;
 import com.codingmogul.microservices.userservice.ui.dto.SignUpRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

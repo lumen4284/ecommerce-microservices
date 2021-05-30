@@ -2,7 +2,6 @@ package com.codingmogul.microservices.userservice.ui;
 
 
 import com.codingmogul.microservices.userservice.application.UserService;
-import com.codingmogul.microservices.userservice.domain.User;
 import com.codingmogul.microservices.userservice.ui.dto.SignInRequest;
 import com.codingmogul.microservices.userservice.ui.dto.SignInResponse;
 import com.codingmogul.microservices.userservice.ui.dto.SignUpRequest;

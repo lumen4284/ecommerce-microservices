@@ -6,6 +6,7 @@ import com.codingmogul.microservices.userservice.domain.User;
 import com.codingmogul.microservices.userservice.ui.dto.SignInRequest;
 import com.codingmogul.microservices.userservice.ui.dto.SignInResponse;
 import com.codingmogul.microservices.userservice.ui.dto.SignUpRequest;
+import com.codingmogul.microservices.userservice.ui.dto.SignUpResponse;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +23,8 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<String> signUp(@Valid @RequestBody SignUpRequest request)  {
-        userService.signUp(request);
-        return ResponseEntity.ok().body("postDto 객체 검증 성공");
+    public ResponseEntity<SignUpResponse> signUp(@Valid @RequestBody SignUpRequest request)  {
+        return ResponseEntity.ok().body(SignUpResponse.from(userService.signUp(request)));
     }
 
     @PostMapping("/login")

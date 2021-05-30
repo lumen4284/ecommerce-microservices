@@ -21,11 +21,12 @@ public class UserService {
     }
 
     @Transactional
-    public void signUp(SignUpRequest request) {
+    public String signUp(SignUpRequest request) {
         verifyDuplicatedUser(request.getEmail());
         final User newUser = User.create(
                 request.getUsername(), request.getPassword(), request.getEmail());
         userRepository.save(newUser);
+        return authService.getToken(newUser.getEmail().getValue());
     }
 
     private void verifyDuplicatedUser(String email) {

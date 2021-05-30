@@ -14,15 +14,15 @@ import javax.validation.constraints.NotNull;
 @Getter
 @RequiredArgsConstructor
 public class User {
-    @NotNull
-    private final Username username;
-    @NotNull
-    private final Password password;
-    @Embedded
-    private final Email email;
     @Id
     @GeneratedValue
     private Long id;
+    @Embedded
+    private final Username username;
+    @Embedded
+    private final Password password;
+    @Embedded
+    private final Email email;
 
     public User() {
         this.username = null;
